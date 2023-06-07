@@ -18,7 +18,6 @@ month = current_date.month
 day = current_date.day
 
 code_bucket = os.environ['codebucket']
-print(codebucket)
 s3 = boto3.resource('s3')
 s3_client=boto3.client('s3')
 sns_client=boto3.client('sns')
@@ -29,7 +28,7 @@ def msg(message):
     Message=message,
     Subject='Message from Lambda Code',
     )
-    
+
 def lambda_handler(event, context):
     
     try:
@@ -91,8 +90,6 @@ def lambda_handler(event, context):
         Message='Successfully Ingested Raw Data',
         Subject='Ingest Raw Data',)
         
-
-    
     return {
         'statusCode': 200,
         'body': json.dumps(otherkey)
