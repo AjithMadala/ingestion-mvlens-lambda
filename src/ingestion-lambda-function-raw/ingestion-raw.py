@@ -85,11 +85,6 @@ def lambda_handler(event, context):
         log.exception(f"error {e}")
         msg(f"Error from files processing {e}")
         
-        response = sns_client.publish(
-        TopicArn='arn:aws:sns:us-east-2:977746141011:data-pipeline-notfication',
-        Message='Successfully Ingested Raw Data',
-        Subject='Ingest Raw Data',)
-        
     return {
         'statusCode': 200,
         'body': json.dumps(otherkey)
